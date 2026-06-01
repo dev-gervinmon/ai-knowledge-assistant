@@ -19,6 +19,9 @@ class Document:
             return self.content
         
         return self.content[:100] + "..."
+    
+    def update_content(self, updated_content):
+        self.content = updated_content
 
     def __repr__(self):
         return f"Document(title={self.title}, category={self.category})"
