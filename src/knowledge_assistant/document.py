@@ -14,5 +14,11 @@ class Document:
         self.content = content
         self.category = category
 
+    def summary(self) -> str:
+        if len(self.content) <= 100:
+            return self.content
+        
+        return self.content[:100] + "..."
+
     def __repr__(self):
         return f"Document(title={self.title}, category={self.category})"
