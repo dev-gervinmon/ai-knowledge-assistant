@@ -6,8 +6,8 @@ class KnowledgeBase:
     def __init__(self):
         self.documents: List[Document] = []
 
-    def add_document():
-        pass
+    def add_document(self, document):
+        self.documents.append(document)
 
     def remove_document():
         pass
