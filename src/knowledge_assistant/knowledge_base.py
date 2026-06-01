@@ -12,5 +12,11 @@ class KnowledgeBase:
     def remove_document(self, document):
         self.documents.remove(document)
 
-    def list_documents():
-        pass
+    def list_documents(self):
+        return [
+            {
+                "title": doc.title,
+                "category": doc.category
+            }
+            for doc in self.documents
+        ]
