@@ -1,12 +1,12 @@
 class Document:
 
-    __allowed_categories = [
-        "Programming",
-        "AI",
-        "DevOps",
-        "Database",
-        "General"
-    ]
+    __allowed_categories = {
+        "programming": "Programming",
+        "ai": "AI",
+        "devops": "DevOps",
+        "database": "Database",
+        "general": "General"
+    }
 
     def __init__(self, title: str, content: str, category: str):
         if not title:
@@ -18,8 +18,10 @@ class Document:
         if not category:
             raise ValueError("Category cannot be empty")
         
-        if category not in self.__allowed_categories:
-            raise ValueError(f"Invalid category {category}. " f"Allowed: {self.__allowed_categories}")
+        normalized = category.strip().lower();
+        
+        if normalized not in self.__allowed_categories:
+            raise ValueError(f"Invalid category {category}. " f"Allowed: {list(self.__allowed_categories.values())}")
         
         self.title = title
         self.content = content
