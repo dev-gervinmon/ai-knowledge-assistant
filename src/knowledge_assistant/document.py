@@ -21,6 +21,12 @@ class Document:
         return self.content[:100] + "..."
     
     def update_content(self, updated_content):
+        if not isinstance(updated_content, str):
+            raise TypeError("content must be a string")
+        
+        if not updated_content.strip():
+            raise ValueError("content cannot be empty")
+        
         self.content = updated_content
 
     def __repr__(self):
