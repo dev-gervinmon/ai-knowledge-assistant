@@ -13,3 +13,6 @@ class Document:
         self.title = title
         self.content = content
         self.category = category
+
+    def __repr__(self):
+        return f"Document(title={self.title}, category={self.category})"
