@@ -9,8 +9,8 @@ class KnowledgeBase:
     def add_document(self, document):
         self.documents.append(document)
 
-    def remove_document():
-        pass
+    def remove_document(self, document):
+        self.documents.remove(document)
 
     def list_documents():
         pass
