@@ -4,12 +4,11 @@ class Document:
             raise ValueError("Title cannot be empty")
         
         if not content:
-            raise ValueError("Title cannot be empty")
+            raise ValueError("Content cannot be empty")
 
         if not category:
-            raise ValueError("Title cannot be empty")
+            raise ValueError("Category cannot be empty")
         
-
         self.title = title
         self.content = content
         self.category = category
