@@ -19,3 +19,6 @@ class KnowledgeBase:
             }
             for doc in self.documents
         ]
+    
+    def find_document(self, title: str) -> Document | None:
+        pass
