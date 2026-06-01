@@ -1,4 +1,13 @@
 class Document:
+
+    __allowed_categories = [
+        "Programming",
+        "AI",
+        "DevOps",
+        "Database",
+        "General"
+    ]
+
     def __init__(self, title: str, content: str, category: str):
         if not title:
             raise ValueError("Title cannot be empty")
@@ -8,6 +17,9 @@ class Document:
 
         if not category:
             raise ValueError("Category cannot be empty")
+        
+        if category not in self.__allowed_categories:
+            raise ValueError(f"Invalid category {category}. " f"Allowed: {self.__allowed_categories}")
         
         self.title = title
         self.content = content
