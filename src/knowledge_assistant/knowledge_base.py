@@ -21,4 +21,9 @@ class KnowledgeBase:
         ]
     
     def find_document(self, title: str) -> Document | None:
-        pass
+        normalized = title.strip().lower()
+
+        return next(
+            (doc for doc in self.documents
+             if doc.title.strip().lower() == normalized), None
+        )
