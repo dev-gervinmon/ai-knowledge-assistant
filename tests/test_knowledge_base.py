@@ -4,7 +4,7 @@ from src.knowledge_assistant.knowledge_base import KnowledgeBase
 
 
 @pytest.fixture
-def sample_document():
+def sd():
     return Document(
         "Python OOP",
         "Classes and objects",
@@ -12,30 +12,46 @@ def sample_document():
     )
 
 @pytest.fixture
-def sample_knowledgebase():
+def skb():
     return KnowledgeBase()
 
-def test_knowledgebase_add_document_successfully(sample_knowledgebase, sample_document):
-    sample_knowledgebase.add_document(sample_document)
+def test_knowledgebase_add_document_successfully(skb, sd):
+    skb.add_document(sd)
     
-    assert len(sample_knowledgebase.documents) == 1
-    assert sample_knowledgebase.documents[0].title == sample_document.title
+    assert len(skb.documents) == 1
+    assert skb.documents[0].title == sd.title
 
-def test_knowledgebase_remove_document_successfully(sample_knowledgebase, sample_document):
-    sample_knowledgebase.add_document(sample_document)
-    sample_knowledgebase.remove_document(sample_document)
+def test_knowledgebase_remove_document_successfully(skb, sd):
+    skb.add_document(sd)
+    skb.remove_document(sd)
     
-    assert len(sample_knowledgebase.documents) == 0
+    assert len(skb.documents) == 0
 
-def test_knowledgebase_list_documents_successfully(sample_knowledgebase, sample_document):
-    sample_knowledgebase.add_document(sample_document)
-    documents = sample_knowledgebase.list_documents()
+def test_knowledgebase_list_documents_successfully(skb, sd):
+    skb.add_document(sd)
+    documents = skb.list_documents()
 
     assert len(documents) == 1
-    assert documents[0]["title"] == sample_document.title
+    assert documents[0]["title"] == sd.title
 
-def test_knowledgebase_find_document_successfully(sample_knowledgebase, sample_document):
-    sample_knowledgebase.add_document(sample_document)
-    document = sample_knowledgebase.find_document(sample_document.title)
+def test_knowledgebase_find_document_successfully(skb, sd):
+    skb.add_document(sd)
+    document = skb.find_document(sd.title)
     
-    assert document.title == sample_document.title
+    assert document.title == sd.title
+
+def test_knowledgebase_iterate_documents_successfully(skb, sd):
+    sd2 = Document(
+        "Docker",
+        "Containers",
+        "DevOps",
+    )
+
+    skb.add_document(sd)
+    skb.add_document(sd2)
+
+    documents = list(skb.iterate_documents())
+
+    assert len(documents) == 2
+    assert documents[0].title == sd.title
+    assert documents[1].title == sd2.title
