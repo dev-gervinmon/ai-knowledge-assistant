@@ -1,5 +1,5 @@
 from typing import List
-from document import Document
+from src.knowledge_assistant.document import Document
 
 class KnowledgeBase:
     def __init__(self):
