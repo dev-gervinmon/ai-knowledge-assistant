@@ -1,13 +1,16 @@
 from typing import List
+from src.decorators.logging import log_call
 from src.knowledge_assistant.document import Document
 
 class KnowledgeBase:
     def __init__(self):
         self.documents: List[Document] = []
 
+    @log_call
     def add_document(self, document: Document):
         self.documents.append(document)
 
+    @log_call
     def remove_document(self, document: Document):
         self.documents.remove(document)
 
