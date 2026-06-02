@@ -7,6 +7,10 @@ class KnowledgeBase:
     def __init__(self):
         self.documents: List[Document] = []
 
+    def iterate_documents(self):
+        for document in self.documents:
+            yield document
+
     @time_execution
     @log_call
     def add_document(self, document: Document):
