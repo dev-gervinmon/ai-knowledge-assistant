@@ -37,3 +37,13 @@ class KnowledgeBase:
             (doc for doc in self.documents
              if doc.title.strip().lower() == normalized), None
         )
+    
+    def search_documents(self, query: str):
+        normalized = query.strip().lower()
+
+        for document in self.documents:
+            if (
+                normalized in document.title.lower() 
+                or normalized in document.content.lower()
+            ):
+                yield document
