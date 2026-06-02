@@ -55,3 +55,18 @@ def test_knowledgebase_iterate_documents_successfully(skb, sd):
     assert len(documents) == 2
     assert documents[0].title == sd.title
     assert documents[1].title == sd2.title
+
+def test_knowledgebase_search_documents_successfully(skb, sd):
+    sd2 = Document(
+        "Docker",
+        "Containers",
+        "DevOps",
+    )
+
+    skb.add_document(sd)
+    skb.add_document(sd2)
+
+    results = list(skb.search_documents("python"))
+
+    assert len(results) == 1
+    assert results[0].title == sd.title
